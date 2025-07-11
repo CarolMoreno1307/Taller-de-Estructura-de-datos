@@ -1,39 +1,42 @@
-import sqlite3
-
-class ListaCalculadora:
+class lista_numeros:
     def __init__(self):
-        self.lista = []  # Array en memoria
-        self.conn = sqlite3.connect('datos.db')
-        self.c = self.conn.cursor()
-        self.c.execute('CREATE TABLE IF NOT EXISTS numeros(valor REAL)')
-        self.conn.commit()
-
-    def menu(self):
-        while True:
-            print("\n1. Añadir 2. Calcular 3. Mostrar 0. Salir")
-            op = input("> ")
-            
-            if op == '1':
-                num = float(input("Número: "))
-                self.lista.append(num)  # Guarda en el array
-                self.c.execute('INSERT INTO numeros VALUES(?)', (num,))  # Guarda en DB
-                self.conn.commit()
-            
-            elif op == '2':
-                if len(self.lista) < 2:
-                    print("Necesitas 2 números")
-                    continue
-                a, b = self.lista[-2], self.lista[-1]  # Usa los últimos 2 del array
-                print(f"Suma: {a+b}, Resta: {a-b}, Multi: {a*b}, Div: {a/b if b!=0 else 'Error'}")
-            
-            elif op == '3':
-                print("\nArray actual:", self.lista)
-                print("Base de datos:")
-                for row in self.c.execute('SELECT * FROM numeros'):
-                    print(row[0])
-            
-            elif op == '0':
-                self.conn.close()
-                break
-
-ListaCalculadora().menu()
+        self.lista_numero = []
+        
+    def guardar_numero(self, dato_numero):
+        """Guarda un par de números en la lista"""
+        if isinstance(dato_numero, list) and len(dato_numero) == 2:
+            self.lista_numero.append(dato_numero)
+            print(f"Guardado: {dato_numero} | Lista actual: {self.lista_numero}")
+        else:
+            print("Error: Debe ingresar una lista con 2 números")
+    
+    def incluir_lista(self, lista_nueva):
+        """Extiende la lista con múltiples pares"""
+        if all(isinstance(par, list) and len(par) == 2 for par in lista_nueva):
+            self.lista_numero.extend(lista_nueva)
+            print(f"Lista extendida | Total: {len(self.lista_numero)} pares")
+        else:
+            print("Error: Todos los elementos deben ser listas de 2 números")
+    
+    def insertar_dato(self, posicion, dato):
+        """Inserta un par en posición específica"""
+        if 0 <= posicion <= len(self.lista_numero):
+            self.lista_numero.insert(posicion, dato)
+            print(f"Insertado en posición {posicion} | Lista: {self.lista_numero}")
+        else:
+            print("Error: Posición inválida")
+        
+    def eliminar_dato(self, dato):
+        """Elimina un par específico"""
+        if dato in self.lista_numero:
+            self.lista_numero.remove(dato)
+            print(f"Eliminado: {dato} | Lista actual: {self.lista_numero}")
+        else:
+            print(f"Error: {dato} no encontrado")
+    
+    def ver_numero(self):
+        """Muestra todos los pares almacenados"""
+        print("\n--- LISTA COMPLETA ---")
+        for i, par in enumerate(self.lista_numero):
+            print(f"{i+1}. {par}")
+        return self.lista_numero
