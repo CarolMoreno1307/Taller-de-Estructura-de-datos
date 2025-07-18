@@ -39,22 +39,20 @@ class BaseDatos:
 
     # FUNCIONES DE TUPLAS
 
+
     def crear_tupla_pares(self, lista):
-        self.tupla_pares=
-        tuple(
+        self.tupla_pares = tuple(
             [
                 n for n in lista if n % 2 == 0
             ]
         )
 
     def crear_tupla_impares(self, lista):
-        self.tupla_impares=
-        tuple(
+        self.tupla_impares = tuple(
             [
                 n for n in lista if n % 2 != 0
             ]
         )
-
     def modificar_tupla(self, tipo, indice, nuevo_valor):
         if tipo == "par":
             if 0 <= indice < len(self.tupla_pares):
