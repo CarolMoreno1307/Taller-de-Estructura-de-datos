@@ -1,4 +1,5 @@
-import BaseDatos
+from base_datos import GestorNumeros
+
 
 class InterfazConsola:
     def __init__(self):
