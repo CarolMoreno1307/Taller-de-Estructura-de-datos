@@ -1,8 +1,9 @@
-class BaseDatos:
+class GestorNumeros:
     def __init__(self):
         self.lista_numeros = []
         self.tupla_pares = ()
         self.tupla_impares = ()
+    
 
     # FUNCIONES DE LISTA
 
@@ -39,7 +40,6 @@ class BaseDatos:
 
     # FUNCIONES DE TUPLAS
 
-
     def crear_tupla_pares(self, lista):
         self.tupla_pares = tuple(
             [
@@ -53,6 +53,7 @@ class BaseDatos:
                 n for n in lista if n % 2 != 0
             ]
         )
+
     def modificar_tupla(self, tipo, indice, nuevo_valor):
         if tipo == "par":
             if 0 <= indice < len(self.tupla_pares):
