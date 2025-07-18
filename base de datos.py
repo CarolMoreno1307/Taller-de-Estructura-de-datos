@@ -2,7 +2,7 @@ lista_numeros = []
 tupla_pares = ()
 tupla_impares = ()
 
-# ---------------- FUNCIONES DE LISTA ----------------
+# FUNCIONES DE LISTA 
 
 def agregar_par(num1, num2):
     """Agrega un par de números como sublista a la lista principal usando append()"""
@@ -41,7 +41,7 @@ def obtener_lista():
     """Devuelve la lista completa de pares"""
     return lista_numeros
 
-# ---------------- FUNCIONES DE TUPLAS ----------------
+# FUNCIONES DE TUPLAS
 
 def crear_tupla_pares(lista):
     """Crea la tupla de números pares a partir de una lista"""
