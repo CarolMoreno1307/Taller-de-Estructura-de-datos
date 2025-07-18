@@ -1,9 +1,3 @@
-lista_numeros = []
-tupla_pares = ()
-tupla_impares = ()
-
-# FUNCIONES DE LISTA 
-
 class BaseDatos:
     def __init__(self):
         self.lista_numeros = []
