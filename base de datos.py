@@ -46,12 +46,20 @@ def obtener_lista():
 def crear_tupla_pares(lista):
     """Crea la tupla de números pares a partir de una lista"""
     global tupla_pares
-    tupla_pares = tuple([n for n in lista if n % 2 == 0])
+    tupla_pares = tuple(
+        [
+            n for n in lista if n % 2 == 0
+        ]
+    )
 
 def crear_tupla_impares(lista):
     """Crea la tupla de números impares a partir de una lista"""
     global tupla_impares
-    tupla_impares = tuple([n for n in lista if n % 2 != 0])
+    tupla_impares = tuple(
+        [
+            n for n in lista if n % 2 != 0
+        ]
+    )
 
 def modificar_tupla(tipo, indice, nuevo_valor):
     """Modifica un valor en la tupla (par o impar) convirtiéndola a lista temporalmente"""
